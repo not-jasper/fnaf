@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Function to request fullscreen
-    function goFullscreen() {
-        const elem = document.documentElement; // Fullscreen the entire webpage
+    setTimeout(() => {
+        const elem = document.documentElement; // Select the entire document for fullscreen
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
         } else if (elem.mozRequestFullScreen) { // For Firefox
@@ -11,12 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (elem.msRequestFullscreen) { // For Internet Explorer/Edge
             elem.msRequestFullscreen();
         }
-    }
-
-    // Trigger fullscreen mode after user clicks anywhere
-    document.addEventListener("click", () => {
-        goFullscreen();
-    }, { once: true });
-
-    alert("Click anywhere to enable fullscreen mode!");
+    }, 2000); // Wait 2 seconds before attempting fullscreen
 });
