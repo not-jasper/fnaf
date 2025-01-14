@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        const elem = document.documentElement; // Select the entire document for fullscreen
+    // Function to request fullscreen
+    function goFullscreen() {
+        const elem = document.documentElement; // Select the entire document
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { // For Firefox
+        } else if (elem.mozRequestFullScreen) { // Firefox
             elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
             elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { // For Internet Explorer/Edge
+        } else if (elem.msRequestFullscreen) { // IE/Edge
             elem.msRequestFullscreen();
         }
-    }, 2000); // Wait 2 seconds before attempting fullscreen
+    }
+
+    // Add a one-time click listener to trigger fullscreen
+    document.addEventListener("click", () => {
+        goFullscreen();
+    }, { once: true });
 });
